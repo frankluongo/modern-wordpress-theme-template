@@ -7,7 +7,7 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./config/nginx-default.conf:/tmp/default.template
+      - ./nginx/default.conf:/tmp/default.template
       - ./backend:/var/www/html:rw,cached
       - ./certs:/etc/certs
     depends_on:
@@ -28,18 +28,12 @@ services:
       - "3306:3306"
 
   wordpress:
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
-    image: wordpress:latest
+    image: wordpress:5.4.1-php7.2-fpm-alpine
     container_name: ${APP_NAME}-wordpress
     volumes:
-      - ./backend/wp-config.php:/var/www/html/wp-config.php
-      - ./backend/plugins:/var/www/html/wp-content/plugins
-      - ./backend/themes:/var/www/html/wp-content/themes
-      - ./backend/uploads:/var/www/html/wp-content/uploads
-      - ./frontend/:/var/www/html/wp-content/themes/${THEME_NAME}
-      - ./plugin/:/var/www/html/wp-content/plugins/${PLUGIN_NAME}
+      - ./backend:/var/www/html:rw,cached
+      - ./frontend:/var/www/html/web/app/themes/${THEME_NAME}
+      - ./plugin:/var/www/html/web/app/plugins/${PLUGIN_NAME}
       - ./config/php.ini:/usr/local/etc/php/conf.d/php.ini
     depends_on:
       - mysql
