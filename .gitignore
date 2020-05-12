@@ -6,6 +6,8 @@ src/web/app/upgrade
 src/web/app/uploads/*
 !src/web/app/uploads/.gitkeep
 
+backend/
+
 # WordPress
 src/web/wp
 src/web/.htaccess
