@@ -9,7 +9,10 @@
     "grant-permission": "cd cli && chmod +x create-cert.sh setup-hosts-file.sh trust-cert.sh",
     "cert:create": "cd cli && ./create-cert.sh",
     "cert:trust": "cd cli && ./trust-cert.sh",
-    "cert:setup": "cd cli && ./setup-hosts-file.sh"
+    "cert:setup": "cd cli && ./setup-hosts-file.sh",
+    "watch": "webpack --watch --env.MODE=development",
+    "build": "webpack --env.MODE=development",
+    "deploy": "webpack --env.MODE=production"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,12 @@
   },
   "homepage": "https://github.com/frankluongo/modern-wordpress-theme-template#readme",
   "devDependencies": {
+    "css-loader": "^3.5.3",
+    "dotenv": "^8.2.0",
+    "dotenv-webpack": "^1.8.0",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   }
