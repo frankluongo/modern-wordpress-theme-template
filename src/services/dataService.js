@@ -1,5 +1,5 @@
-export async function getData() {
-  const res = await fetch("/wp-json");
+export async function dataService(url) {
+  const res = await fetch(url);
   const data = await res.json();
-  console.log(data);
+  return data;
 }

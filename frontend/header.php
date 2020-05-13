@@ -11,4 +11,4 @@
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
-		<main id="main-content">
+		<div id="app">

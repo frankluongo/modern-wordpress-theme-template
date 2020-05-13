@@ -11,3 +11,5 @@
       add_action('init', array($this, 'appScript'));
     }
   }
+
+  $AppScripts = new Scripts();
