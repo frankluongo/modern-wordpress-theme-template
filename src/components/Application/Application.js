@@ -1,21 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Navigation from "../Navigation";
-import { dataService } from "../../services/dataService";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import HomePage from "../../pages/HomePage";
+import RegularPage from "../../pages/RegularPage";
+import Layout from "../Layout/Layout";
 
 const Application = () => {
-  const [navLinks, setNavLinks] = useState({});
-  useEffect(() => {
-    async function fetchData() {
-      const data = await dataService("/wp-json/menus/v1/menus/primary-menu");
-      setNavLinks(data);
-    }
-    fetchData();
-  }, []);
-
   return (
-    <section>
-      <Navigation items={navLinks} />
-    </section>
+    <Router>
+      <Layout>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/:slug" component={RegularPage} />
+        </Switch>
+      </Layout>
+    </Router>
   );
 };
 
