@@ -12,7 +12,7 @@
     "cert:setup": "cd cli && ./setup-hosts-file.sh",
     "watch": "webpack --watch --env.MODE=development",
     "build": "webpack --env.MODE=development",
-    "deploy": "webpack --env.MODE=production"
+    "deploy": "webpack --env.MODE=production && cp -R backend/wp-content/themes/testapptheme testapptheme && zip -r testapptheme.zip testapptheme && rm -R testapptheme"
   },
   "repository": {
     "type": "git",
