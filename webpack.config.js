@@ -4,12 +4,12 @@ require("dotenv").config();
 
 module.exports = (env) => {
   const { THEME_NAME } = process.env;
-  const dist = `backend/wp-content/themes/${THEME_NAME}`;
+  const dist = `backend/wp-content/plugins/${THEME_NAME}`;
   return {
     mode: env.MODE,
     entry: "./src/scripts/index.js",
     output: {
-      filename: "app.js",
+      filename: "plugin.js",
       path: path.resolve(__dirname, dist),
     },
     module: {
