@@ -1,11 +1,12 @@
+require("dotenv").config();
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 
-module.exports = (env) => {
-  const dist = `src/web/app/plugins/checkout-enhancements`;
+module.exports = () => {
+  const dist = `${process.env.PLUGIN_DIST}/${process.env.PLUGIN_NAME}`;
   return {
     mode: "development",
-    entry: "./plugins/checkout-enhancements/scripts/index.js",
+    entry: `${process.env.PLUGIN_PATH}/scripts/index.js`,
     output: {
       filename: "plugin.js",
       path: path.resolve(__dirname, dist),
@@ -38,9 +39,7 @@ module.exports = (env) => {
     },
     plugins: [
       new CopyPlugin({
-        patterns: [
-          { from: "./plugins/checkout-enhancements/templates", to: "" },
-        ],
+        patterns: [{ from: `${process.env.PLUGIN_PATH}/templates`, to: "" }],
       }),
     ],
   };
