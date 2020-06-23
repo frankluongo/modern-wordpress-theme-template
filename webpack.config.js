@@ -2,7 +2,62 @@ const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 require("dotenv").config();
 
-module.exports = (env) => {
+const commonRules = [
+  {
+    test: /\.s[ac]ss$/i,
+    use: ["style-loader", "css-loader", "sass-loader"],
+  },
+  {
+    test: /\.(png|svg|jpg|gif)$/,
+    use: ["file-loader"],
+  },
+  {
+    test: /\.(woff|woff2|eot|ttf|otf)$/,
+    use: ["file-loader"],
+  },
+];
+
+const pluginConfig = (env) => {
+  const dist = `${process.env.PLUGIN_DIST}/${process.env.PLUGIN_NAME}`;
+  return {
+    mode: env.MODE,
+    entry: `${process.env.PLUGIN_PATH}/scripts/index.js`,
+    output: {
+      filename: "plugin.js",
+      path: path.resolve(__dirname, dist),
+    },
+    module: {
+      rules: commonRules,
+    },
+    plugins: [
+      new CopyPlugin({
+        patterns: [
+          {
+            from: `${process.env.PLUGIN_PATH}/templates`,
+            to: "",
+          },
+        ],
+      }),
+    ],
+  };
+};
+
+const pluginAdminConfig = (env) => {
+  const dist = `${process.env.PLUGIN_DIST}/${process.env.PLUGIN_NAME}/admin/js`;
+  return {
+    mode: env.MODE,
+    entry: `${process.env.PLUGIN_PATH}/scripts/admin.js`,
+    output: {
+      filename: "admin.js",
+      path: path.resolve(__dirname, dist),
+    },
+    module: {
+      rules: commonRules,
+    },
+  };
+};
+
+const themeConfig = (env) => {
   const { THEME_NAME } = process.env;
   const dist = `backend/wp-content/themes/${THEME_NAME}`;
   return {
@@ -13,30 +68,7 @@ module.exports = (env) => {
       path: path.resolve(__dirname, dist),
     },
     module: {
-      rules: [
-        // Handle CSS / Scss
-        {
-          test: /\.s[ac]ss$/i,
-          use: [
-            // Creates `style` nodes from JS strings
-            "style-loader",
-            // Translates CSS into CommonJS
-            "css-loader",
-            // Compiles Sass to CSS
-            "sass-loader",
-          ],
-        },
-        // Handle Images
-        {
-          test: /\.(png|svg|jpg|gif)$/,
-          use: ["file-loader"],
-        },
-        // Handle Fonts
-        {
-          test: /\.(woff|woff2|eot|ttf|otf)$/,
-          use: ["file-loader"],
-        },
-      ],
+      rules: commonRules,
     },
     plugins: [
       new CopyPlugin({
@@ -44,4 +76,8 @@ module.exports = (env) => {
       }),
     ],
   };
+};
+
+module.exports = (env) => {
+  return [themeConfig(env), pluginConfig(env), pluginAdminConfig(env)];
 };

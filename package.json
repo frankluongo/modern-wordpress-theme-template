@@ -12,9 +12,8 @@
     "cert:setup": "cd cli && ./setup-hosts-file.sh",
     "watch": "webpack --watch --env.MODE=development",
     "build": "webpack --env.MODE=development",
-    "deploy": "webpack --env.MODE=production && cp -R backend/wp-content/themes/testapptheme testapptheme && zip -r testapptheme.zip testapptheme && rm -R testapptheme",
-    "watch:plugin": "webpack --config plugin.config.js --watch",
-    "deploy:plugin": "webpack --config plugin.config.js --mode production"
+    "deploy:theme": "webpack --env.MODE=production && cp -R backend/wp-content/themes/testapptheme testapptheme && zip -r testapptheme.zip testapptheme && rm -R testapptheme",
+    "deploy:plugin": "webpack --env.MODE=production && cp -R backend/wp-content/plugins/testappplugin testappplugin && zip -r testappplugin.zip testappplugin && rm -R testappplugin"
   },
   "repository": {
     "type": "git",

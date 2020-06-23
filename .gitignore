@@ -28,3 +28,4 @@ bin
 
 # Custom
 .DS_Store
+dist
