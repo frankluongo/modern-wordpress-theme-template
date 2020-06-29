@@ -14,7 +14,7 @@
     "build": "webpack --env.MODE=development",
     "deploy:theme": "webpack --env.MODE=production && cp -R backend/wp-content/themes/testapptheme testapptheme && zip -r testapptheme.zip testapptheme && rm -R testapptheme",
     "deploy:plugin": "webpack --env.MODE=production && cp -R backend/wp-content/plugins/testappplugin testappplugin && zip -r testappplugin.zip testappplugin && rm -R testappplugin",
-    "start": "concurrently \"npm run backend\" && \"npm run watch\""
+    "start": "concurrently \"npm run backend\" \"npm run watch\""
   },
   "repository": {
     "type": "git",
