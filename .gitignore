@@ -29,3 +29,4 @@ bin
 # Custom
 .DS_Store
 dist
+package-lock.json
