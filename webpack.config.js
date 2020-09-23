@@ -2,11 +2,11 @@ const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 require("dotenv").config();
 
+const { babelLoader, cssLoader } = require("./webpack/loaders");
+
 const commonRules = [
-  {
-    test: /\.s[ac]ss$/i,
-    use: ["style-loader", "css-loader", "sass-loader"],
-  },
+  babelLoader,
+  cssLoader,
   {
     test: /\.(png|svg|jpg|gif)$/,
     use: ["file-loader"],
