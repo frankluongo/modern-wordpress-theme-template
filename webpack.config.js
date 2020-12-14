@@ -2,19 +2,23 @@ const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
 require("dotenv").config();
 
-const { babelLoader, cssLoader } = require("./webpack/loaders");
+const {
+  babelLoader,
+  fontLoader,
+  imageLoader,
+  cssLoader,
+  sassLoader,
+  cssExtract,
+  themeCopy,
+  entry,
+} = require("./webpack");
 
 const commonRules = [
   babelLoader,
   cssLoader,
-  {
-    test: /\.(png|svg|jpg|gif)$/,
-    use: ["file-loader"],
-  },
-  {
-    test: /\.(woff|woff2|eot|ttf|otf)$/,
-    use: ["file-loader"],
-  },
+  sassLoader,
+  fontLoader,
+  imageLoader,
 ];
 
 const pluginConfig = (env) => {
@@ -62,22 +66,21 @@ const themeConfig = (env) => {
   const dist = `backend/wp-content/themes/${THEME_NAME}`;
   return {
     mode: env.MODE,
-    entry: "./src/scripts/index.js",
+    entry,
     output: {
-      filename: "app.js",
-      path: path.resolve(__dirname, dist),
+      filename: "[name].js",
+      path: path.resolve(__dirname, `${dist}/assets`),
     },
     module: {
       rules: commonRules,
     },
-    plugins: [
-      new CopyPlugin({
-        patterns: [{ from: "./src/templates", to: "" }],
-      }),
-    ],
+    plugins: [themeCopy(dist), cssExtract().plugin],
   };
 };
 
 module.exports = (env) => {
-  return [themeConfig(env), pluginConfig(env), pluginAdminConfig(env)];
+  return [
+    themeConfig(env),
+    // pluginConfig(env), pluginAdminConfig(env)
+  ];
 };

@@ -11,7 +11,7 @@
     "cert:trust": "cd cli && ./trust-cert.sh",
     "cert:setup": "cd cli && ./setup-hosts-file.sh",
     "watch": "webpack --watch --env.MODE=development",
-    "build": "webpack --env.MODE=development",
+    "build": "webpack --env.MODE=production",
     "deploy:theme": "webpack --env.MODE=production && cp -R backend/wp-content/themes/testapptheme testapptheme && zip -r testapptheme.zip testapptheme && rm -R testapptheme",
     "deploy:plugin": "webpack --env.MODE=production && cp -R backend/wp-content/plugins/testappplugin testappplugin && zip -r testappplugin.zip testappplugin && rm -R testappplugin",
     "start": "concurrently \"npm run backend\" \"npm run watch\""
@@ -28,24 +28,31 @@
   },
   "homepage": "https://github.com/frankluongo/modern-wordpress-theme-template#readme",
   "devDependencies": {
-    "@babel/cli": "^7.11.6",
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
-    "babel-loader": "^8.1.0",
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-module-resolver": "^4.0.0",
     "concurrently": "^5.3.0",
-    "copy-webpack-plugin": "^6.1.1",
-    "css-loader": "^3.5.3",
+    "copy-webpack-plugin": "^6.4.0",
+    "css-loader": "^3.6.0",
+    "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",
     "dotenv-webpack": "^1.8.0",
     "file-loader": "^6.0.0",
-    "postcss": "^8.0.9",
-    "postcss-loader": "^4.0.2",
+    "mini-css-extract-plugin": "^1.3.3",
+    "postcss": "^7.0.26",
+    "postcss-import": "^13.0.0",
+    "postcss-loader": "^4.1.0",
     "postcss-preset-env": "^6.7.0",
-    "sass": "^1.26.5",
+    "postcss-purgecss": "^2.0.3",
+    "sass": "^1.30.0",
     "sass-loader": "^8.0.2",
-    "style-loader": "^1.2.1",
+    "style-loader": "^1.3.0",
     "webpack": "^4.44.2",
     "webpack-cli": "^3.3.12"
   },
-  "dependencies": {}
+  "dependencies": {
+    "sensible-sass-starter": "^1.0.6"
+  }
 }

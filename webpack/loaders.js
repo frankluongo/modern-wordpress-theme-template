@@ -1,22 +1,51 @@
+const { cssExtract } = require("./plugins");
+
 exports.babelLoader = {
-  loader: "babel-loader",
   test: /\.m?js$/,
   exclude: /(node_modules|bower_components)/,
+  use: {
+    loader: "babel-loader",
+    options: {
+      presets: ["@babel/preset-env"],
+      plugins: [
+        [
+          "module-resolver",
+          {
+            root: ["./"],
+            alias: {
+              "@components": "./src/scripts/components",
+            },
+          },
+        ],
+      ],
+    },
+  },
 };
 
 exports.cssLoader = {
-  test: /\.((c|sa|sc)ss)$/i,
+  test: /\.css$/,
+  use: [{ loader: cssExtract().loader }, "css-loader", "postcss-loader"],
+};
+
+exports.fontLoader = {
+  test: /\.(woff|woff2|eot|ttf|otf)$/,
+  use: ["file-loader"],
+};
+
+exports.imageLoader = {
+  test: /\.(png|svg|jpg|gif)$/,
+  use: ["file-loader"],
+};
+
+exports.sassLoader = {
+  test: /\.s[ac]ss$/i,
   exclude: /(node_modules|bower_components)/,
   use: [
-    // Creates `style` nodes from JS strings
-    "style-loader",
-    // Translates CSS into CommonJS
-    "css-loader",
-    // Compiles Sass to CSS
-    "sass-loader",
     {
-      loader: "postcss-loader",
-      // options: { postcssOptions: { plugins: ["postcss-preset-env", {}] } },
+      loader: cssExtract().loader,
     },
+    "css-loader",
+    "sass-loader",
+    "postcss-loader",
   ],
 };

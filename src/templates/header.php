@@ -10,5 +10,6 @@
 
 		<?php wp_head(); ?>
 	</head>
-	<body <?php body_class(); ?>>
+  <body <?php body_class(); ?>>
+    <header class="xs:p-1">Header</header>
 		<main id="main-content">

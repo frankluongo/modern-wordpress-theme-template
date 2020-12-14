@@ -1,1 +1,3 @@
-console.log("put some nav code in here");
+export default function Navigation() {
+  console.log("hi");
+}
