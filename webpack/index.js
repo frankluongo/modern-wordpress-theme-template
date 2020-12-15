@@ -1,7 +1,10 @@
 const { entry } = require("./entries");
 const {
-  babelLoader,
+  pluginBabelLoader,
+  themeBabelLoader,
   cssLoader,
+  adminCssLoader,
+  pluginCssLoader,
   fontLoader,
   imageLoader,
   sassLoader,
@@ -12,11 +15,16 @@ const { themeCopy, cssExtract } = require("./plugins");
 exports.entry = entry;
 
 // Loaders
-exports.babelLoader = babelLoader;
+exports.pluginBabelLoader = pluginBabelLoader;
+exports.themeBabelLoader = themeBabelLoader;
+
+exports.adminCssLoader = adminCssLoader;
+exports.pluginCssLoader = pluginCssLoader;
 exports.cssLoader = cssLoader;
+exports.sassLoader = sassLoader;
+
 exports.fontLoader = fontLoader;
 exports.imageLoader = imageLoader;
-exports.sassLoader = sassLoader;
 
 // Plugins
 exports.themeCopy = themeCopy;

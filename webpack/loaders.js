@@ -1,6 +1,18 @@
 const { cssExtract } = require("./plugins");
 
-exports.babelLoader = {
+exports.pluginBabelLoader = {
+  test: /\.m?js$/,
+  exclude: /(node_modules|bower_components)/,
+  use: {
+    loader: "babel-loader",
+    options: {
+      presets: ["@babel/preset-env"],
+      plugins: [],
+    },
+  },
+};
+
+exports.themeBabelLoader = {
   test: /\.m?js$/,
   exclude: /(node_modules|bower_components)/,
   use: {
@@ -20,6 +32,16 @@ exports.babelLoader = {
       ],
     },
   },
+};
+
+exports.adminCssLoader = {
+  test: /\.(css|s[ac]ss)$/,
+  use: ["style-loader", "css-loader"],
+};
+
+exports.pluginCssLoader = {
+  test: /\.(css|s[ac]ss)$/,
+  use: ["style-loader", "css-loader", "postcss-loader"],
 };
 
 exports.cssLoader = {

@@ -3,35 +3,31 @@ const CopyPlugin = require("copy-webpack-plugin");
 require("dotenv").config();
 
 const {
-  babelLoader,
+  themeBabelLoader,
+  pluginBabelLoader,
   fontLoader,
   imageLoader,
   cssLoader,
   sassLoader,
+  adminCssLoader,
+  pluginCssLoader,
   cssExtract,
   themeCopy,
   entry,
 } = require("./webpack");
 
-const commonRules = [
-  babelLoader,
-  cssLoader,
-  sassLoader,
-  fontLoader,
-  imageLoader,
-];
+const pluginDir = `${process.env.PLUGIN_DIST}/${process.env.PLUGIN_NAME}`;
 
 const pluginConfig = (env) => {
-  const dist = `${process.env.PLUGIN_DIST}/${process.env.PLUGIN_NAME}`;
   return {
     mode: env.MODE,
-    entry: `${process.env.PLUGIN_PATH}/scripts/index.js`,
+    entry: `./plugin/scripts/frontend.js`,
     output: {
       filename: "plugin.js",
-      path: path.resolve(__dirname, dist),
+      path: path.resolve(__dirname, pluginDir),
     },
     module: {
-      rules: commonRules,
+      rules: [pluginBabelLoader, pluginCssLoader, fontLoader, imageLoader],
     },
     plugins: [
       new CopyPlugin({
@@ -50,13 +46,13 @@ const pluginAdminConfig = (env) => {
   const dist = `${process.env.PLUGIN_DIST}/${process.env.PLUGIN_NAME}/admin/js`;
   return {
     mode: env.MODE,
-    entry: `${process.env.PLUGIN_PATH}/scripts/admin.js`,
+    entry: `./plugin/scripts/admin.js`,
     output: {
       filename: "admin.js",
       path: path.resolve(__dirname, dist),
     },
     module: {
-      rules: commonRules,
+      rules: [pluginBabelLoader, adminCssLoader, fontLoader, imageLoader],
     },
   };
 };
@@ -72,15 +68,12 @@ const themeConfig = (env) => {
       path: path.resolve(__dirname, `${dist}/assets`),
     },
     module: {
-      rules: commonRules,
+      rules: [themeBabelLoader, cssLoader, sassLoader, fontLoader, imageLoader],
     },
     plugins: [themeCopy(dist), cssExtract().plugin],
   };
 };
 
 module.exports = (env) => {
-  return [
-    themeConfig(env),
-    // pluginConfig(env), pluginAdminConfig(env)
-  ];
+  return [themeConfig(env), pluginConfig(env), pluginAdminConfig(env)];
 };
