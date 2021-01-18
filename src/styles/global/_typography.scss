@@ -1,0 +1,11 @@
+:root {
+  --font-heading: var(--font-secondary);
+}
+
+.menu a {
+  color: var(--color-primary);
+  font-family: var(--font-headings);
+  font-size: var(--fs-sm);
+  font-weight: bold;
+  text-decoration: none;
+}

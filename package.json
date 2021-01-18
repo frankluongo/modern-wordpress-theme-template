@@ -53,6 +53,6 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
-    "sensible-sass-starter": "^1.0.6"
+    "sensible-sass-starter": "^1.0.10"
   }
 }

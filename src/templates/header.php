@@ -11,5 +11,5 @@
 		<?php wp_head(); ?>
 	</head>
   <body <?php body_class(); ?>>
-    <header class="xs:p-1">Header</header>
+    <?php include(locate_template('components/Header.php')); ?>
 		<main id="main-content">
