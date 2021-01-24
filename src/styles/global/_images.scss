@@ -3,3 +3,52 @@ img {
   height: auto;
   max-width: 100%;
 }
+
+.has-bg {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.image-wrapper.square {
+  padding-top: 100%;
+}
+
+.image-wrapper img {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  height: 100%;
+  width: 100%;
+
+  object-fit: cover;
+}
+
+.content p img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 640px) {
+  .content p img {
+    width: auto;
+  }
+
+  .content p img.alignleft {
+    float: left;
+    margin-right: 1rem;
+  }
+  .content p img.alignright {
+    float: right;
+    margin-left: 1rem;
+  }
+}

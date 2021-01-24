@@ -10,7 +10,13 @@
         wp_enqueue_style('app', get_template_directory_uri() . '/assets/app.css');
         wp_enqueue_script('app');
       }
-      if( is_page() || is_single() ) {
+      if (is_single()) {
+        if ($post->post_type == 'photos') {
+          wp_enqueue_script('photos', get_template_directory_uri() . '/assets/photos.js');
+        }
+      }
+
+      if( is_page()) {
         switch($post->post_name) {
           case 'home':
             wp_enqueue_script('home', get_template_directory_uri() . '/assets/home.js');

@@ -1,0 +1,92 @@
+.hero {
+  background-color: var(--color-primary-dark);
+}
+
+.hero--tall {
+  height: 100vh;
+  max-height: 1080px;
+}
+
+.hero--short {
+  justify-content: center;
+  padding: 6rem 1rem;
+
+  // color: $white;
+  text-align: center;
+
+  // background-color: darken(map-get($colors, blue), 15);
+}
+
+.hero__background {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  opacity: 0.25;
+}
+
+.hero__image {
+  height: 30vh;
+  max-height: 30rem;
+  width: auto;
+}
+
+.hero__title {
+  left: 50%;
+  top: 50%;
+
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.hero__section {
+  align-items: center;
+  display: flex;
+  flex: 0 1 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// .hero__section--ladies {
+//   background-color: darken(map-get($colors, blue), 20);
+// }
+// .hero__section--officers,
+// .hero--about {
+//   background-color: darken(map-get($colors, blue), 25);
+// }
+
+.hero-section__button {
+  margin-top: 2rem;
+}
+
+// @include breakpoint(min, medium) {
+//   .hero {
+//     flex-direction: row;
+//   }
+
+//   .hero--tall {
+//     min-height: calc(100vh - 97px);
+//   }
+
+//   .hero__section {
+//     flex: 0 1 50%;
+//     padding: 4rem;
+//   }
+
+//   .hero--short {
+//     padding: 8rem 2rem;
+
+//     text-align: center;
+//   }
+
+//   .hero__image {
+//     height: 30rem;
+//   }
+// }

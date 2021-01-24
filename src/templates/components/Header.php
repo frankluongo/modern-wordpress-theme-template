@@ -12,9 +12,7 @@
         <?php include(locate_template('icons/times.php')); ?>
         </button>
       </section>
-      <?php
-        wp_nav_menu(array ('theme_location' => 'header_nav', 'container' => false));
-      ?>
+      <?php wp_nav_menu(array ('theme_location' => 'header_nav', 'container' => false)); ?>
     </nav>
     <button class="toggle lg:dnone" data-toggle data-ctrl="nav">
       <span class="visually-hidden">Show Menu</span>

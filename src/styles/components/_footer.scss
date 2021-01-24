@@ -1,0 +1,32 @@
+.footer {
+  background-color: var(--color-primary);
+
+  a {
+    color: var(--color-white);
+  }
+
+  .menu {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    @media (max-width: 1023px) {
+      flex-direction: column;
+
+      & > * + * {
+        margin-top: 1rem;
+      }
+    }
+    @media (min-width: 1024px) {
+      & > * + * {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
+.footer__copright {
+  background-color: var(--color-primary-dark);
+
+  color: var(--color-white);
+}

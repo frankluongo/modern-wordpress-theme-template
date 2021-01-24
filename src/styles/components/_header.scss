@@ -1,6 +1,6 @@
 .header,
 .inner-header {
-  border-bottom: 1px solid var(--gray-light);
+  border-bottom: 1px solid var(--color-gray-light);
 }
 
 .header {
@@ -35,12 +35,12 @@
       transition: transform 200ms ease-in-out;
     }
 
-    .menu ul > * + * {
+    .menu > * + * {
       margin-top: 1rem;
     }
 
     .menu li {
-      border-bottom: 1px solid var(--gray-light);
+      border-bottom: 1px solid var(--color-gray-light);
     }
 
     .menu a {
@@ -55,11 +55,11 @@
   @media (min-width: 1024px) {
     --logo: 4rem;
 
-    .menu ul {
+    .menu {
       display: flex;
     }
 
-    .menu ul > * + * {
+    .menu > * + * {
       margin-left: 1rem;
     }
   }

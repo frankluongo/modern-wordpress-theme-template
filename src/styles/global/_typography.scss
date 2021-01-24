@@ -1,11 +1,131 @@
 :root {
+  --font-primary: "Lora", serif;
+  --font-secondary: "Old Standard TT", serif;
+  --font-tertiary: "Rubik Mono One", sans-serif;
+  --font-paragraph: var(--font-primary);
   --font-heading: var(--font-secondary);
+  --font-ui: var(--font-tertiary);
+
+  --base-font-size: 16px;
+  --fs-small: 0.707rem;
+  --fs-paragraph: 1rem;
+  --fs-h6: 4vw;
+  --fs-h5: 5vw;
+  --fs-h4: 6vw;
+  --fs-h3: 8vw;
+  --fs-h2: 10vw;
+  --fs-h1: 11vw;
+  --fs-xl: 13vw;
+}
+
+@media (min-width: 600px) {
+  :root {
+    --fs-small: 0.75rem;
+    --fs-paragraph: 1rem;
+    --fs-h6: 0.75rem;
+    --fs-h5: 1.333rem;
+    --fs-h4: 1.777rem;
+    --fs-h3: 2.369rem;
+    --fs-h2: 3.157rem;
+    --fs-h1: 4.209rem;
+    --fs-xl: 11.302rem;
+  }
+}
+
+html {
+  font-size: var(--base-font-size);
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-primary);
+}
+
+.heading {
+  display: block;
+  margin-bottom: 1rem;
+
+  font-family: var(--font-heading);
+  line-height: 1;
+}
+
+* + .heading {
+  margin-top: 1rem;
+}
+
+.paragraph,
+.content p {
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+.paragraph + .paragraph,
+.content p + p {
+  margin-top: 1rem;
+}
+
+.xlarge {
+  font-size: var(--fs-xl);
+}
+.h1 {
+  font-size: var(--fs-h1);
+}
+.h2 {
+  font-size: var(--fs-h2);
+}
+.h3 {
+  font-size: var(--fs-h3);
+}
+.h4 {
+  font-size: var(--fs-h4);
+}
+.h5 {
+  font-size: var(--fs-h5);
+}
+.h6 {
+  font-size: var(--fs-h6);
+}
+p,
+.paragraph {
+  font-size: var(--fs-paragraph);
+}
+.small {
+  font-size: var(--fs-small);
 }
 
 .menu a {
   color: var(--color-primary);
-  font-family: var(--font-headings);
+  font-family: var(--font-heading);
   font-size: var(--fs-sm);
   font-weight: bold;
   text-decoration: none;
+  text-transform: uppercase;
+}
+
+a.link {
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.link--on-light {
+  color: var(--color-primary);
+}
+
+.color-white {
+  color: var(--color-white);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+.font-paragraph {
+  font-family: var(--font-paragraph);
+}
+.font-ui {
+  font-family: var(--font-ui);
 }

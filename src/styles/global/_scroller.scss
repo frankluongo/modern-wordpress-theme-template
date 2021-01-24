@@ -1,0 +1,45 @@
+.scroller {
+  width: 100%;
+  max-width: 100vw;
+
+  overflow: hidden;
+}
+
+.scroller > * {
+  width: 100%;
+
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+@media (max-width: 1023px) {
+  .sm\:scroller {
+    width: 100%;
+    max-width: 100vw;
+
+    overflow: hidden;
+  }
+
+  .sm\:scroller > * {
+    width: 100%;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:scroller {
+    width: 100%;
+    max-width: 100vw;
+
+    overflow: hidden;
+  }
+
+  .lg\:scroller > * {
+    width: 100%;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}

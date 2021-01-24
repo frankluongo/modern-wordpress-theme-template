@@ -1,0 +1,47 @@
+.button-reset {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.button {
+  padding: 1rem;
+
+  font-family: var(--font-ui);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+
+.button--block {
+  display: block;
+}
+
+.button--outline {
+  color: var(--color-primary);
+
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+}
+.button--outline:hover {
+  color: #ffffff;
+  background-color: var(--color-primary);
+}
+.button--filled-in {
+  color: var(--color-white);
+
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.button--filled-in:hover {
+  color: var(--color-primary);
+
+  background-color: var(--color-white);
+  border: 2px solid var(--color-white);
+}

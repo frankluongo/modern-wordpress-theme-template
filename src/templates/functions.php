@@ -23,9 +23,22 @@
     );
     add_theme_support( 'custom-logo', $defaults );
   }
+
+  if( function_exists('acf_add_options_page') ) {
+    acf_add_options_page(array(
+      'page_title' 	=> 'Theme Settings',
+      'menu_title'	=> 'Theme Settings',
+      'menu_slug' 	=> 'theme-general-settings',
+      'capability'	=> 'edit_posts',
+      'redirect'		=> false
+    ));
+  }
+
   // Add Actions
   add_action('init', 'register_menus');
   add_action( 'after_setup_theme', 'oftu_custom_logo_setup' );
   // Theme Supports
   add_theme_support('post-thumbnails');
   add_theme_support( 'custom-logo' );
+
+  include 'partials/nextEvent.php';
