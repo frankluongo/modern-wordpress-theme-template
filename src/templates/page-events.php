@@ -2,7 +2,7 @@
   get_header();
   $post = get_post( $post );
   $title = $post->post_title;
-  $events = new Events('both');
+  $events = new EventsBuilder('both');
   $all_events = $events->get_all_events();
   $events_title = "All Events";
   $show_link = false;

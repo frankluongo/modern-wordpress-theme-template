@@ -4,7 +4,7 @@
   $hero = get_field('hero');
   $image = $hero['image'];
   $type = $hero['type'];
-  $events = new Events($type);
+  $events = new EventsBuilder($type);
   $all_events = $events->get_events();
   $photos_params = array(
     'post_type'   => 'photos',

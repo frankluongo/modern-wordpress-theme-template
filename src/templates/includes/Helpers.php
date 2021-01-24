@@ -52,7 +52,7 @@ function render_excerpt() {
   return;
 }
 
-class Events {
+class EventsBuilder {
   // Constructor
   public function __construct($type) {
     $this->type = $type;

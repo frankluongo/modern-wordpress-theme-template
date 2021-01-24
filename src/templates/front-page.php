@@ -1,8 +1,8 @@
 <?php
   get_header();
   $heroes = get_field('homepage_hero_images');
-  $ladies = new Events('ladies');
-  $officers = new Events('officers');
+  $ladies = new EventsBuilder('ladies');
+  $officers = new EventsBuilder('officers');
 ?>
 <section class="hero hero--tall dgrid md:grid-cols-2">
   <section class="has-bg dflex flex-column align-items-center justify-center" style="background-image: url(<?php echo $heroes['ladies_hero_image']; ?>)">
