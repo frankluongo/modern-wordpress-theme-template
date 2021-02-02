@@ -1,5 +1,6 @@
 # Application
 backend/
+*.zip
 
 # WP-CLI
 db-sync
